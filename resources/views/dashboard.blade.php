@@ -1,15 +1,56 @@
+<style>
+    .statistics {
+        background-color: rgba(128, 128, 128, 0.489);
+    }
+</style>
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+    <div class="w-full flex flex-row">
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+        @include('layouts.aside')
+        
+        <div class="w-5/6">
+            <div class="p-2 rounded-lg dark:border-gray-700 flex flex-col grow justify-between h-full">
+                <div class="grid grid-cols-3 gap-4 mb-4">
+                    <div
+                        class="flex flex-col grow items-center bg-green-500 justify-center h-24 rounded dark:bg-gray-800">
+                        <p class="text-md md:text-3xl font-extrabold text-gray-100 dark:text-gray-300">
+                            {{-- {{ $students_count }} --}}133
+                        </p>
+                        <p class="text-md md:text-2xl text-gray-100 dark:text-gray-400">
+                            Students
+                        </p>
+
+                    </div>
+                    <div
+                        class="flex flex-col grow items-center bg-green-500 justify-center h-24 rounded dark:bg-gray-800">
+                        <p class="text-md md:text-3xl font-extrabold text-gray-100 dark:text-gray-300">
+                            {{-- {{ $announcements_count }} --}}133
+                        </p>
+                        <p class="text-md md:text-2xl text-gray-100 dark:text-gray-400">
+                            Announcements
+                        </p>
+
+                    </div>
+                    <div
+                        class="flex flex-col grow items-center bg-green-500 justify-center h-24 rounded dark:bg-gray-800">
+                        <p class="text-md md:text-3xl font-extrabold text-gray-100 dark:text-gray-300">
+                            {{-- {{ $companies_count }} --}}133
+                        </p>
+                        <p class="text-md md:text-2xl text-gray-100 dark:text-gray-400">
+                            Companies
+                        </p>
+
+                    </div>
+                </div>
+
+                <div
+                    class="flex flex-col grow bg-green-500 items-center justify-center h-48 mb-4 rounded dark:bg-gray-800">
+                    <p class="text-md md:text-3xl font-extrabold text-gray-100 dark:text-gray-300">
+                        {{-- {{ $skill_matching_rate }} --}}133
+                    </p>
+                    <p class="text-md md:text-2xl text-gray-100 dark:text-gray-400">
+                        applyed announcements
+                    </p>
                 </div>
             </div>
         </div>
