@@ -28,49 +28,80 @@
                     </a>
                 </li>
 
-                <!-- Statisctics -->
-                <li>
-                    <a href="{{ route('dashboard') }}"
-                        class="statistics flex flex-row-reverse md:flex-row justify-between gap-2 md:gap-0 md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
-                            <path
-                                d="M1 1V17C1 17.5304 1.21071 18.0391 1.58579 18.4142C1.96086 18.7893 2.46957 19 3 19H19"
-                                stroke="#708090" stroke-width="2" stroke-miterlimit="5.759" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M5 12L9 8L13 12L19 6" stroke="#708090" stroke-width="2" stroke-miterlimit="5.759"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M16 6H19V9" stroke="#708090" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
+                @hasrole('admin')
+                    <!-- Statisctics -->
+                    <li>
+                        <a href="{{ route('dashboard') }}"
+                            class="statistics flex flex-row-reverse md:flex-row justify-between gap-2 md:gap-0 md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+                                <path
+                                    d="M1 1V17C1 17.5304 1.21071 18.0391 1.58579 18.4142C1.96086 18.7893 2.46957 19 3 19H19"
+                                    stroke="#708090" stroke-width="2" stroke-miterlimit="5.759" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M5 12L9 8L13 12L19 6" stroke="#708090" stroke-width="2" stroke-miterlimit="5.759"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 6H19V9" stroke="#708090" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
 
-                        <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Statistics</span>
-                    </a>
-                </li>
+                            <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Statistics</span>
+                        </a>
+                    </li>
 
-                <!-- Categories -->
-                <li>
-                    <a href="{{ route('categories.index') }}"
-                        class="categories flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text--900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                        <svg width="19px" height="20px" viewBox="0 0 19 20" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g id="Rounded" transform="translate(-614.000000, -3124.000000)">
-                                    <g id="Maps" transform="translate(100.000000, 3068.000000)">
-                                        <g id="-Round-/-Maps-/-category" transform="translate(511.000000, 54.000000)">
-                                            <g>
-                                                <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
-                                                <path
-                                                    d="M11.15,3.4 C11.54,2.76 12.46,2.76 12.85,3.4 L16.56,9.48 C16.97,10.14 16.49,11 15.71,11 L8.28,11 C7.5,11 7.02,10.14 7.43,9.48 L11.15,3.4 Z M17.5,22 C15.0147186,22 13,19.9852814 13,17.5 C13,15.0147186 15.0147186,13 17.5,13 C19.9852814,13 22,15.0147186 22,17.5 C22,19.9852814 19.9852814,22 17.5,22 Z M4,21.5 C3.45,21.5 3,21.05 3,20.5 L3,14.5 C3,13.95 3.45,13.5 4,13.5 L10,13.5 C10.55,13.5 11,13.95 11,14.5 L11,20.5 C11,21.05 10.55,21.5 10,21.5 L4,21.5 Z"
-                                                    id="🔹-Icon-Color" fill="#708090"></path>
+                    <!-- Categories -->
+                    <li>
+                        <a href="{{ route('categories.index') }}"
+                            class="categories flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text--900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
+                            <svg width="19px" height="20px" viewBox="0 0 19 20" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="Rounded" transform="translate(-614.000000, -3124.000000)">
+                                        <g id="Maps" transform="translate(100.000000, 3068.000000)">
+                                            <g id="-Round-/-Maps-/-category" transform="translate(511.000000, 54.000000)">
+                                                <g>
+                                                    <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
+                                                    <path
+                                                        d="M11.15,3.4 C11.54,2.76 12.46,2.76 12.85,3.4 L16.56,9.48 C16.97,10.14 16.49,11 15.71,11 L8.28,11 C7.5,11 7.02,10.14 7.43,9.48 L11.15,3.4 Z M17.5,22 C15.0147186,22 13,19.9852814 13,17.5 C13,15.0147186 15.0147186,13 17.5,13 C19.9852814,13 22,15.0147186 22,17.5 C22,19.9852814 19.9852814,22 17.5,22 Z M4,21.5 C3.45,21.5 3,21.05 3,20.5 L3,14.5 C3,13.95 3.45,13.5 4,13.5 L10,13.5 C10.55,13.5 11,13.95 11,14.5 L11,20.5 C11,21.05 10.55,21.5 10,21.5 L4,21.5 Z"
+                                                        id="🔹-Icon-Color" fill="#708090"></path>
+                                                </g>
                                             </g>
                                         </g>
                                     </g>
                                 </g>
-                            </g>
-                        </svg>
+                            </svg>
 
-                        <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Categories</span>
+                            <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Categories</span>
+                        </a>
+                    </li>
+
+                    <!-- Users -->
+                    <li>
+                        <a href="{{ route('users.index') }}"
+                            class="users flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="user">
+                                <path
+                                    d="M256 256c52.805 0 96-43.201 96-96s-43.195-96-96-96-96 43.201-96 96 43.195 96 96 96zm0 48c-63.598 0-192 32.402-192 96v48h384v-48c0-63.598-128.402-96-192-96z"
+                                    fill="#708090" class="color000000 svgShape">
+                                </path>
+                            </svg>
+                            <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Users</span>
+                        </a>
+                    </li>
+                @endhasrole
+                <!-- Reservations -->
+                <li>
+                    <a href="{{ route('reservations.index') }}"
+                        class="reservations flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="user">
+                            <path
+                                d="M256 256c52.805 0 96-43.201 96-96s-43.195-96-96-96-96 43.201-96 96 43.195 96 96 96zm0 48c-63.598 0-192 32.402-192 96v48h384v-48c0-63.598-128.402-96-192-96z"
+                                fill="#708090" class="color000000 svgShape">
+                            </path>
+                        </svg>
+                        <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Reservations</span>
                     </a>
                 </li>
 
@@ -78,8 +109,9 @@
                 <li>
                     <a href="{{ route('events.index') }}"
                         class="events flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                        <svg class="p-0 m-0 object-center" width="22" height="22" viewBox="-1.12 -1.12 18.24 18.24"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#708090" stroke-width="0.00016">
+                        <svg class="p-0 m-0 object-center" width="22" height="22"
+                            viewBox="-1.12 -1.12 18.24 18.24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            stroke="#708090" stroke-width="0.00016">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                             <g id="SVGRepo_iconCarrier">
@@ -94,21 +126,6 @@
                             </g>
                         </svg>
                         <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Events</span>
-                    </a>
-                </li>
-
-                <!-- Users -->
-                <li>
-                    <a href="{{ route('users.index') }}"
-                        class="users flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="user">
-                            <path
-                                d="M256 256c52.805 0 96-43.201 96-96s-43.195-96-96-96-96 43.201-96 96 43.195 96 96 96zm0 48c-63.598 0-192 32.402-192 96v48h384v-48c0-63.598-128.402-96-192-96z"
-                                fill="#708090" class="color000000 svgShape">
-                            </path>
-                        </svg>
-                        <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Users</span>
                     </a>
                 </li>
             </div>
