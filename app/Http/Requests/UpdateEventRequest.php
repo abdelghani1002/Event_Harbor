@@ -23,15 +23,16 @@ class UpdateEventRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|min:3',
-            'description' => 'required|string',
-            'date' => 'required|date|after:now',
-            'place' => 'required|string',
-            'tickets_number' => 'required|integer|min:1',
-            'ticket_price' => 'required|numeric|min:0',
+            'title' => 'string|min:3',
+            'description' => 'string',
+            'date' => 'date|after:now',
+            'place' => 'string',
+            'status' => 'in:pending,rejected,published',
+            'tickets_number' => 'integer|min:1',
+            'ticket_price' => 'numeric|min:0',
             'photo' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'reservation_type' => 'required|in:manual,automatic',
-            'category_id' => 'required|exists:categories,id',
+            'reservation_type' => 'in:manual,automatic',
+            'category_id' => 'exists:categories,id',
         ];
     }
 }

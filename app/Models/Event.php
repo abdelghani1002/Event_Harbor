@@ -42,4 +42,20 @@ class Event extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    /**
+     * Define the event clients
+     */
+    public function clients()
+    {
+        return $this->belongsToMany(User::class, 'reservations');
+    }
+
+    /**
+     * Define the event reserved seats
+     */
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }

@@ -14,10 +14,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->hasRole("admin"))
-            $events = Event::latest()->paginate(6);
         if (auth()->user()->hasRole("organizer"))
             $events = Event::latest()->where('user_id', auth()->id())->paginate(6);
+        $events = Event::latest()->paginate(6);
         return view("admin.events.index", compact("events"));
     }
 

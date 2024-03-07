@@ -18,7 +18,6 @@ return new class extends Migration
             $table->timestamp('date');
             $table->string('place');
             $table->integer('tickets_number');
-            $table->integer('tickets_booked')->default(0);
             $table->float('ticket_price');
             $table->string('photo_src')->nullable()->default('event_default.jpg');
             $table->enum('reservation_type', ['manual', 'automatic'])->default('manual');
