@@ -19,7 +19,11 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        @include('layouts.navigation')
+        @auth
+            @include('layouts.navigation')
+        @else
+            @include('layouts.header')
+        @endauth
 
         <!-- Page Heading -->
         @if (isset($header))
@@ -37,8 +41,8 @@
     </div>
     <script>
         function confirmDelete() {
-        let confirmation = confirm("Are you sure you want to delete it ?!");
-        return confirmation;
+            let confirmation = confirm("Are you sure you want to delete it ?!");
+            return confirmation;
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>

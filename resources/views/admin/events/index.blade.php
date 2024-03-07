@@ -94,26 +94,30 @@
 
                                 <td class="p-2 border-r border-white">
                                     <p class="text-center">
-                                        {{ $event->tickets_booked }}
+                                        {{ $event->reservations->count() }}
                                     </p>
                                 </td>
 
                                 @hasrole('admin')
                                     <td class="p-2 border-r border-white">
-                                        <select id="status_select" name="status"
-                                            @if ($event->status == 'pending') class="text-center rounded-md p-1 bg-yellow-300 text-yellow-600" @endif
-                                            @if ($event->status == 'published') class="text-center rounded-md p-1 bg-green-300 text-green-600" @endif
-                                            @if ($event->status == 'rejected') class="text-center rounded-md p-1 bg-violet-300 text-violet-600" @endif>
-                                            <option class="dark:bg-slate-800 dark:text-gray-300" value="pending"
-                                                @if ($event->status == 'pending') selected @endif>
-                                                pending</option>
-                                            <option class="dark:bg-slate-800 dark:text-gray-300" value="published"
-                                                @if ($event->status == 'published') selected @endif>
-                                                published</option>
-                                            <option class="dark:bg-slate-800 dark:text-gray-300" value="rejected"
-                                                @if ($event->status == 'rejected') selected @endif>
-                                                rejected</option>
-                                        </select>
+                                        <form method="POST" action="{{ route('events.update', $event) }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <select name="status"
+                                                @if ($event->status == 'pending') class="status_select text-center rounded-md p-1 bg-yellow-300 text-yellow-600" @endif
+                                                @if ($event->status == 'published') class="status_select text-center rounded-md p-1 bg-green-300 text-green-600" @endif
+                                                @if ($event->status == 'rejected') class="status_select text-center rounded-md p-1 bg-violet-300 text-violet-600" @endif>
+                                                <option class="dark:bg-slate-800 dark:text-gray-300" value="pending"
+                                                    @if ($event->status == 'pending') selected @endif>
+                                                    pending</option>
+                                                <option class="dark:bg-slate-800 dark:text-gray-300" value="published"
+                                                    @if ($event->status == 'published') selected @endif>
+                                                    published</option>
+                                                <option class="dark:bg-slate-800 dark:text-gray-300" value="rejected"
+                                                    @if ($event->status == 'rejected') selected @endif>
+                                                    rejected</option>
+                                            </select>
+                                        </form>
                                     </td>
                                 @endhasrole
                                 @hasrole('organizer')
@@ -177,4 +181,7 @@
             </div>
         </div>
     </div>
+
+    @vite(['resources/js/status.js'])
+
 </x-app-layout>
