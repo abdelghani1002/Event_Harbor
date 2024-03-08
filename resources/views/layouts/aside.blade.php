@@ -91,6 +91,7 @@
                     </li>
                 @endhasrole
                 <!-- Requests -->
+                @hasrole('organizer')
                 <li>
                     <a href="{{ route('reservations.index') }}"
                         class="requests flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
@@ -102,6 +103,7 @@
                         <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Requests</span>
                     </a>
                 </li>
+                @endhasrole
 
                 <!-- Events -->
                 <li>

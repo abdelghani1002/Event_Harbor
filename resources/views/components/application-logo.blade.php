@@ -1,5 +1,5 @@
 <div class="flex justify-center items-center">
-    <span class="w-">
+    <span class="w-full">
         <svg class="" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
             <path
                 class="fill-violet-400"

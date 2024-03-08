@@ -12,21 +12,21 @@
 
 
         <section class="text-gray-400 bg-gray-900 body-font">
-            <div class="container mx-auto flex px-5 py-12 md:flex-row flex-col items-center ">
+            <div class="container mx-auto flex px-5 py-12 md:flex-row items-center flex-col-reverse">
                 <div
                     class="lg:flex-grow md:w-1/2 md:h-fit lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                    <div class="flex flex-col">
+                    <div class="mb-5 md:mb-8 flex flex-col">
                         <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
                             {{ $event->title }}
                         </h1>
-                        <p class="mb-8 leading-relaxed">
+                        <p class="mb-5 md:mb-8 leading-relaxed">
                             {{ $event->description }}
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quisquam repudiandae natus
                             voluptate hic, veniam magni deleniti quibusdam. Esse nam necessitatibus blanditiis, quam sit
                             labore eum ex eveniet aliquam dolores dolore ad aut ipsam delectus deleniti, sint odit eaque
                             sequi architecto? Illum possimus hic ullam ducimus iusto quod sapiente quia?
                         </p>
-                        <div class="flex justify-between items-center dark:text-gray-100">
+                        <div class="mb-5 md:mb-8 flex justify-between items-center dark:text-gray-100">
                             <span class="mb-3 w-fit px-2 py-1 rounded-md dark:bg-gray-700 ">
                                 {{ $event->category->name }}
                             </span>
@@ -42,7 +42,7 @@
                                 </span>
                             </span>
                         </div>
-                        <div class="my-5 flex justify-between ">
+                        <div class="flex justify-between ">
                             <div class="w-1/3 flex flex-col md:flex-row items-center md:items-end gap-2">
                                 <svg class="w-7 fill-white" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"
                                     viewBox="0 0 64 64" id="location">
@@ -98,9 +98,8 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <div class="flex justify-between w-full bottom-0">
+                    <div class="flex justify-between w-full">
                         <span class="flex items-center gap-1">
                             <span class="">
                                 <svg class="w-5 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"

@@ -9,7 +9,7 @@
             alt="Product Image">
         <div class="p-2">
             <div class="absolute top-0 right-0 bg-violet-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">
-                {{ \Carbon\Carbon::parse($event->date)->format('d M, Y') }}
+                {{ \Carbon\Carbon::parse($event->date)->format('d M, Y | h:i') }}
             </div>
             <h3 class="text-lg dark:text-gray-200 font-medium mb-2">{{ $event->title }}</h3>
             <p class="text-gray-600 text-sm mb-4 dark:text-gray-300">{{ Str::limit($event->description, 80, '...') }}</p>
