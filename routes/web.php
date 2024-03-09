@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('role:admin,organizer');
 
-    Route::get('users', [UserController::class, 'index'])->middleware('role:admin')->name("users.index");
+    Route::resource('users', UserController::class)->only(['index', 'update'])->middleware('role:admin');
     Route::resource('categories', CategoryController::class)->middleware('role:admin,organizer');
     Route::resource('events', EventController::class)->except('show')->middleware('role:admin,organizer');
     Route::get('events/{event}', [EventController::class,'show'])->name('events.show');
