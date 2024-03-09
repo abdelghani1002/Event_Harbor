@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResereveController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('reservations', [ReservationController::class, 'index'])->name('reservations.index')->middleware('role:admin,organizer');
     Route::put('/reservations/edit/{reservation}', [ReservationController::class, "edit"])->name('reservations.edit')->middleware('role:organizer');
     Route::post('/reservations/accepteAll', [ReservationController::class, "accepteAll"])->name('reservations.accepteAll')->middleware('role:admin,organizer');
+    Route::post('/download-ticket/{event}', [TicketController::class, 'download'])->name('download.ticket');
 });
 
 require __DIR__ . '/auth.php';

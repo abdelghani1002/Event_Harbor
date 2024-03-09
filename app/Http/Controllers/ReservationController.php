@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Reservation;
+use App\Notifications\ReservationAcceptedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -29,16 +30,33 @@ class ReservationController extends Controller
             $reservation->save();
             return redirect()->back()->with('infos', 'Your candidat has been registred. Please wait for organizer approval.');
         }
-        $reservation->status = 'accepted';
-        $reservation->save();
         // payment
-        return redirect()->back()->with('success', 'Your candidat has been registred. Check your email for the ticket.');
+
+        return self::store_ticket($reservation);
+        // ticket
+    }
+
+    static function store_ticket($reservation)
+    {
+        $ticket = TicketController::generate($reservation);
+        if ($ticket) {
+            $pdfPath = public_path('storage/tickets/ticket_' . $reservation->user_id . '_' . $reservation->event_id . '.pdf');
+            $ticket->save($pdfPath);
+            $reservation->status = 'accepted';
+            $reservation->save();
+            return redirect()->back()->with('success', 'Your ticket has been saved.');
+        }
+        return redirect()->back()->with('error', 'Error withing generate your ticket!');
     }
 
     public function edit(Request $request, Reservation $reservation)
     {
         $status = $request->status;
         $reservation->update(['status' => $status]);
+        if($status == 'accepted'){
+            self::store_ticket($reservation);
+            $reservation->client->notify(new ReservationAcceptedNotification($reservation));
+        }
         return redirect()->back()->with('success', 'Reservation updated successfully');
     }
 }

@@ -121,10 +121,12 @@
                                 <strong class="mr-2 text-xl">{{ $event->reservations->count() }} </strong>tickets sold
                             </span>
                         @elseif(auth()->user()->events_booked_to->contains($event))
-                            <span
-                                class="inline-flex text-white bg-teal-600 border-0 py-2 px-6 focus:outline-none rounded text-lg">
-                                booked
-                            </span>
+                            <form action="{{ route('download.ticket', $event) }}" method="post"
+                                class="inline-flex text-white bg-teal-600 border-0 p-0 focus:outline-none rounded text-lg">
+                                @csrf
+                                @method('POST')
+                                <button class="p-0 m-0">Get my Ticket</button>
+                            </form>
                         @elseif($event->tickets_number - $event->tickets_booked == 0)
                             <span
                                 class="inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none rounded text-lg">

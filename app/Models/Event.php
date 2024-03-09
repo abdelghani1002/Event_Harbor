@@ -24,6 +24,7 @@ class Event extends Model
         'photo_src',
         'reservation_type',
         'status',
+        'category_id',
     ];
 
 
