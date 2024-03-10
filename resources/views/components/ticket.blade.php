@@ -1,143 +1,230 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ticket</title>
-    <style>
-        /* add classes here */
-    </style>
 
+<style>
+    .cardWrap {
+        width: 27em;
+        margin: 3em auto;
+        color: #fff;
+        font-family: sans-serif;
+    }
+
+    .card {
+        background: linear-gradient(to bottom, #e84c3d 0%, #e84c3d 26%, #ecedef 26%, #ecedef 100%);
+        height: 11em;
+        float: left;
+        position: relative;
+        padding: 1em;
+        margin-top: 100px;
+    }
+
+    .cardLeft {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        width: 16em;
+    }
+
+    .cardRight {
+        width: 6.5em;
+        border-left: .18em dashed #fff;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .cardRight:before,
+    .cardRight:after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: .9em;
+        height: .9em;
+        background: #fff;
+        border-radius: 50%;
+        left: -.5em;
+    }
+
+    .cardRight:before {
+        top: -.4em;
+    }
+
+    .cardRight:after {
+        bottom: -.4em;
+    }
+
+    h1 {
+        font-size: 1.1em;
+        margin-top: 0;
+    }
+
+    h1 span {
+        font-weight: normal;
+    }
+
+    .title,
+    .name,
+    .seat,
+    .time {
+        text-transform: uppercase;
+        font-weight: normal;
+    }
+
+    .title h2,
+    .name h2,
+    .seat h2,
+    .time h2 {
+        font-size: .9em;
+        color: #525252;
+        margin: 0;
+    }
+
+    .title span,
+    .name span,
+    .seat span,
+    .time span {
+        font-size: .7em;
+        color: #a2aeae;
+    }
+
+    .title {
+        margin: 2em 0 0 0;
+    }
+
+    .name,
+    .seat {
+        margin: .7em 0 0 0;
+    }
+
+    .time {
+        margin: .7em 0 0 1em;
+    }
+
+    .seat,
+    .time {
+        float: left;
+    }
+
+    .eye {
+        position: relative;
+        width: 2em;
+        height: 1.5em;
+        background: #fff;
+        margin: 0 auto;
+        border-radius: 1em/0.6em;
+        z-index: 1;
+    }
+
+    .eye:before,
+    .eye:after {
+        content: "";
+        display: block;
+        position: absolute;
+        border-radius: 50%;
+    }
+
+    .eye:before {
+        width: 1em;
+        height: 1em;
+        background: #e84c3d;
+        z-index: 2;
+        left: 8px;
+        top: 4px;
+    }
+
+    .eye:after {
+        width: .5em;
+        height: .5em;
+        background: #fff;
+        z-index: 3;
+        left: 12px;
+        top: 8px;
+    }
+
+    .number {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .number h3 {
+        color: #e84c3d;
+        margin: .9em 0 0 0;
+        font-size: 2.5em;
+    }
+
+    .number span {
+        display: block;
+        color: #a2aeae;
+    }
+
+    .barcode {
+        height: 2em;
+        width: 0;
+        margin: 1.2em 0 0 .8em;
+        box-shadow: 1px 0 0 1px #343434,
+            5px 0 0 1px #343434,
+            10px 0 0 1px #343434,
+            11px 0 0 1px #343434,
+            15px 0 0 1px #343434,
+            18px 0 0 1px #343434,
+            22px 0 0 1px #343434,
+            23px 0 0 1px #343434,
+            26px 0 0 1px #343434,
+            30px 0 0 1px #343434,
+            35px 0 0 1px #343434,
+            37px 0 0 1px #343434,
+            41px 0 0 1px #343434,
+            44px 0 0 1px #343434,
+            47px 0 0 1px #343434,
+            51px 0 0 1px #343434,
+            56px 0 0 1px #343434,
+            59px 0 0 1px #343434,
+            64px 0 0 1px #343434,
+            68px 0 0 1px #343434,
+            72px 0 0 1px #343434,
+            74px 0 0 1px #343434,
+            77px 0 0 1px #343434,
+            81px 0 0 1px #343434;
+    }
+</style>
 </head>
 
 <body>
-    <div
-        class="hover:scale-[101%] bg-white dark:bg-slate-800 m-2 rounded-lg overflow-hidden shadow-lg ring-4 ring-violet-500 ring-opacity-40 max-w-sm w-full md:w-[30%] flex flex-col justify-between">
-        <div class="relative w-full  dark:text-gray-300">
-            <img class="w-full object-cover max-h-56"
-                @if (file_exists(asset('storage/photos/' . $reservation->event->photo_src))) src="{{ asset('storage/photos/' . $reservation->event->photo_src) }}"
-            @else
-            src="{{ asset('storage/photos/event_default.png') }}" @endif
-                alt="event Image">
-            <div class="p-2">
-                <div
-                    class="absolute top-0 right-0 bg-violet-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">
-                    {{ \Carbon\Carbon::parse($reservation->event->date)->format('d M, Y | h:i') }}
-                </div>
-                <h3 class="text-lg dark:text-gray-200 font-medium mb-2">{{ $reservation->event->title }}</h3>
-                <p class="text-gray-600 text-sm mb-4 dark:text-gray-300">
-                    {{ Str::limit($reservation->event->description, 80, '...') }}</p>
-                <span
-                    class="font-medium mb-2 bg-gray-200 dark:bg-gray-600 p-1 rounded-md">{{ $reservation->event->category->name }}</span>
+    <div class="cardWrap">
+        <div class="card cardLeft">
+            <h1>Event <span>Harbor</span></h1>
+            <div class="title">
+                <h2>{{ $reservation->event->title }}</h2>
+                <span>{{ $reservation->event->category->name }}</span>
             </div>
-        </div>
-        <div class="p-4">
-            <div class="flex items-end mt-4 justify-between">
-                <span class="flex items-center gap-1">
-                    <span>
-                        <svg class="w-5 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                            id="ticket">
-                            <path
-                                d="m4.906 11.541 3.551 3.553 6.518-6.518-3.553-3.551-6.516 6.516zm14.198-4.877-1.511-1.512a2.024 2.024 0 0 1-2.747-2.746L13.335.894a1.017 1.017 0 0 0-1.432 0L.893 11.904a1.017 1.017 0 0 0 0 1.432l1.512 1.51a2.024 2.024 0 0 1 2.747 2.748l1.512 1.51a1.015 1.015 0 0 0 1.432 0L19.104 8.096a1.015 1.015 0 0 0 0-1.432zM8.457 16.719l-5.176-5.178L11.423 3.4l5.176 5.176-8.142 8.143z">
-                            </path>
-                        </svg>
-                    </span>
-                    <span class="font-bold p-0 text-lg dark:text-gray-200">{{ $reservation->event->ticket_price }}$</span>
-                </span>
-                <span class="mt-3 inline-flex items-center">
-                    <div class="flex justify-center items-center">
-                        <span class="w-full">
-                            <svg class="" xmlns="http://www.w3.org/2000/svg" width="34" height="34"
-                                viewBox="0 0 24 24">
-                                <path class="fill-violet-400"
-                                    d="M21.947 9.179a1.001 1.001 0 0 0-.868-.676l-5.701-.453-2.467-5.461a.998.998 0 0 0-1.822-.001L8.622 8.05l-5.701.453a1 1 0 0 0-.619 1.713l4.213 4.107-1.49 6.452a1 1 0 0 0 1.53 1.057L12 18.202l5.445 3.63a1.001 1.001 0 0 0 1.517-1.106l-1.829-6.4 4.536-4.082c.297-.268.406-.686.278-1.065z">
-                                </path>
-                            </svg>
-                        </span>
-                        <div class="flex justify-center items-center h-full">
-                            <p class="font-bold text-violet-400 pr-0.5 text-xl">EVENT</p>
-                            <p class="text-violet-400"> HarBor</p>
-                        </div>
-                    </div>
-                </span>
+            <div class="name">
+                <span>Client</span>
+                <h2>{{ $reservation->client->name }}</h2>
             </div>
+            <div class="seat">
+                <span>Seats</span>
+                <h2>{{ $reservation->event->tickets_number }}</h2>
+            </div>
+            <div class="time">
+                <span>time</span>
+                <h2>{{ \Carbon\Carbon::parse($reservation->event->date)->format('d M, Y') }},<p>
+                        {{ \Carbon\Carbon::parse($reservation->event->date)->format('h:i') }}</p>
+                </h2>
+            </div>
+
         </div>
+        <div class="card cardRight">
+            <div class="eye"></div>
+            <div class="number">
+                <span>Seat</span>
+                <h3>#{{ $reservation->id }}</h3>
+            </div>
+            <div class="barcode"></div>
+        </div>
+
     </div>
 </body>
-
-</html> --}}
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <style>
-        /* Add your custom styles here */
-
-        .ticket {
-            width: 100%;
-            height: 50%;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .event-image {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .event-info {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .event-date {
-            font-size: 14px;
-            color: #555;
-        }
-
-        .event-title {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .event-details {
-            font-size: 14px;
-            color: #777;
-            margin-bottom: 10px;
-        }
-
-        .ticket-price {
-            background-color: #eee;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-
-<body style="width: 100%; height: 100%;">
-    <div class="ticket">
-        {{-- <img class="event-image" src="{{ asset('storage/photos/' . $reservation->event->photo_src) }}" alt="Event Image"> --}}
-        <div class="event-info">
-            <div class="event-date">{{ \Carbon\Carbon::parse($reservation->event->date)->format('d M, Y | h:i') }}</div>
-            <div class="ticket-price">${{ $reservation->event->ticket_price }}</div>
-        </div>
-        <h3 class="event-title">{{ $reservation->event->title }}</h3>
-        <p class="event-details">{{ $reservation->event->place }}</p>
-    </div>
-</body>
-
 </html>
-
-

@@ -10,7 +10,6 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,7 +36,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class)->only(['index', 'update'])->middleware('role:admin');
     Route::resource('categories', CategoryController::class)->middleware('role:admin,organizer');
     Route::resource('events', EventController::class)->except('show')->middleware('role:admin,organizer');
-    Route::get('events/{event}', [EventController::class,'show'])->name('events.show');
 
     Route::post('/reservations/{event}', [ReservationController::class, "store"])->name('reservations.store');
     Route::get('reservations', [ReservationController::class, 'index'])->name('reservations.index')->middleware('role:admin,organizer');
@@ -45,5 +43,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/reservations/accepteAll', [ReservationController::class, "accepteAll"])->name('reservations.accepteAll')->middleware('role:admin,organizer');
     Route::post('/download-ticket/{event}', [TicketController::class, 'download'])->name('download.ticket');
 });
+Route::get('events/{event}', [EventController::class,'show'])->name('events.show');
 
 require __DIR__ . '/auth.php';

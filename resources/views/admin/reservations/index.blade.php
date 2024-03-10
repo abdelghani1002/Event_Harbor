@@ -6,7 +6,7 @@
 <x-app-layout>
     <div class="w-full flex flex-row">
         @include('layouts.aside')
-        <div class="w-5/6">
+        <div class="w-11/12 md:w-5/6">
             <div class="flex flex-row items-center py-1 w-full px-2 justify-between">
                 <h3 class="text-2xl font-bold text-cyan-800 dark:text-cyan-300">Requests</h3>
                 <!-- Success&Error alert -->
@@ -28,7 +28,7 @@
             </div>
 
 
-            <div class="flex flex-col justify-between h-[79dvh] w-full">
+            <div class="flex flex-col justify-between md:h-[79dvh] w-full  overflow-x-scroll scrollbar-hide">
 
                 <!-- Events Table -->
                 @unless ($reservations->count() == 0)

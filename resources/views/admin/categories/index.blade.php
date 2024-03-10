@@ -6,7 +6,7 @@
 <x-app-layout>
     <div class="w-full flex flex-row">
         @include('layouts.aside')
-        <div class="w-5/6">
+        <div class="w-11/12 md:w-5/6">
             <div class="flex flex-row items-center py-1 w-full px-2 justify-between">
                 <h3 class="text-2xl font-bold text-cyan-800 dark:text-cyan-300">Categories</h3>
                 <!-- Success&Error alert -->
@@ -26,7 +26,7 @@
             </div>
 
 
-            <div class="flex flex-col justify-between h-[79dvh] w-full">
+            <div class="flex flex-col justify-between md:h-[79dvh] w-full overflow-x-scroll scrollbar-hide">
 
                 <!-- Categories Table -->
                 <table id="categories_table"
@@ -55,7 +55,7 @@
                                 <td class="p-2 border-r border-white">
                                     <div class="flex justify-center">
                                         @if (file_exists(public_path('storage/photos/') . $category->photo_src))
-                                            <img class="w-16 h-16 object-cover rounded-sm"
+                                            <img class="w-16 h-16 object-center rounded-sm"
                                                 src="{{ asset('storage/photos/' . $category->photo_src) }}"
                                                 alt="{{ $category->name }} photo">
                                         @endif
@@ -91,7 +91,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="p-2">
+                <div class="p-2 w-full">
                     {{ $categories->onEachSide(1)->links() }}
                 </div>
             </div>

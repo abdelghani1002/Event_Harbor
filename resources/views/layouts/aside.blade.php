@@ -1,13 +1,13 @@
-<aside class="md:w-1/6 h-[88dvh] bg-emerald-400 -translate-x-[90px] md:-translate-x-0" aria-label="Sidebar">
+<aside class="w-1/12 md:w-1/6 h-[90vh] md:h-[88dvh] overflow-hidden rounded-lg" aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto dark:bg-gray-800">
         <ul class="h-full font-medium flex flex-col justify-between">
             <div class="space-y-2">
                 <!-- Home -->
                 <li>
                     <a href="{{ route('home') }}"
-                        class="home flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
+                        class="md:home flex flex-row-reverse md:flex-row ml-1 md:ml-0 md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
                         <div class="">
-                            <svg class="-ml-1 -mr-1 flex-shrink-0 w-7 h-7 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            <svg class="-ml-1 -mr-1 flex-shrink-0 w-7 h-7 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 md:dark:group-hover:text-white"
                                 xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
                                 viewBox="0,0,256,256">
                                 <g fill="#708090" fill-rule="nonzero" stroke="none" stroke-width="1"
@@ -23,7 +23,7 @@
                             </svg>
                         </div>
                         <div class="">
-                            <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Home</span>
+                            <span class="hidden md:block md:flex-1 m-0 md:ms-3 whitespace-nowrap">Home</span>
                         </div>
                     </a>
                 </li>
@@ -32,8 +32,8 @@
                     <!-- Statisctics -->
                     <li>
                         <a href="{{ route('dashboard') }}"
-                            class="statistics flex flex-row-reverse md:flex-row justify-between gap-2 md:gap-0 md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            class="ml-1 md:ml-0 md:statistics flex flex-row-reverse md:flex-row justify-between gap-2 md:gap-0 md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 md:dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
                                 <path
                                     d="M1 1V17C1 17.5304 1.21071 18.0391 1.58579 18.4142C1.96086 18.7893 2.46957 19 3 19H19"
@@ -45,71 +45,61 @@
                                     stroke-linejoin="round" />
                             </svg>
 
-                            <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Statistics</span>
+                            <span class="hidden md:block md:flex-1 m-0 md:ms-3 whitespace-nowrap">Statistics</span>
                         </a>
                     </li>
 
                     <!-- Categories -->
                     <li>
                         <a href="{{ route('categories.index') }}"
-                            class="categories flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text--900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                            <svg width="19px" height="20px" viewBox="0 0 19 20" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="Rounded" transform="translate(-614.000000, -3124.000000)">
-                                        <g id="Maps" transform="translate(100.000000, 3068.000000)">
-                                            <g id="-Round-/-Maps-/-category" transform="translate(511.000000, 54.000000)">
-                                                <g>
-                                                    <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
-                                                    <path
-                                                        d="M11.15,3.4 C11.54,2.76 12.46,2.76 12.85,3.4 L16.56,9.48 C16.97,10.14 16.49,11 15.71,11 L8.28,11 C7.5,11 7.02,10.14 7.43,9.48 L11.15,3.4 Z M17.5,22 C15.0147186,22 13,19.9852814 13,17.5 C13,15.0147186 15.0147186,13 17.5,13 C19.9852814,13 22,15.0147186 22,17.5 C22,19.9852814 19.9852814,22 17.5,22 Z M4,21.5 C3.45,21.5 3,21.05 3,20.5 L3,14.5 C3,13.95 3.45,13.5 4,13.5 L10,13.5 C10.55,13.5 11,13.95 11,14.5 L11,20.5 C11,21.05 10.55,21.5 10,21.5 L4,21.5 Z"
-                                                        id="🔹-Icon-Color" fill="#708090"></path>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
+                            class="md:categories -ml-4 md:-ml-0 flex md:flex-row justify-between md:justify-normal items-center p-2 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 md:dark:group-hover:text-white"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                style="fill: rgb(144, 156, 168);">
+                                <path
+                                    d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11 4h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6h-4v-4h4v4zM17 3c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2zM7 13c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z">
+                                </path>
                             </svg>
 
-                            <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Categories</span>
+                            <span class="hidden md:block md:flex-1 m-0 md:ms-3 whitespace-nowrap">Categories</span>
                         </a>
                     </li>
 
                     <!-- Users -->
                     <li>
                         <a href="{{ route('users.index') }}"
-                            class="users flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            class="users ml-1 md:ml-0 flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 md:dark:group-hover:text-white"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="user">
                                 <path
                                     d="M256 256c52.805 0 96-43.201 96-96s-43.195-96-96-96-96 43.201-96 96 43.195 96 96 96zm0 48c-63.598 0-192 32.402-192 96v48h384v-48c0-63.598-128.402-96-192-96z"
                                     fill="#708090" class="color000000 svgShape">
                                 </path>
                             </svg>
-                            <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Users</span>
+                            <span class="hidden md:block md:flex-1 m-0 md:ms-3 whitespace-nowrap">Users</span>
                         </a>
                     </li>
                 @endhasrole
                 <!-- Requests -->
                 @hasrole('organizer')
-                <li>
-                    <a href="{{ route('reservations.index') }}"
-                        class="requests flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-5 h-5 fill-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path
-                                d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" />
-                        </svg>
-                        <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Requests</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="{{ route('reservations.index') }}"
+                            class="md:requests ml-1 md:ml-0 flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
+                            <svg class="flex-shrink-0 w-5 h-5 fill-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 md:dark:group-hover:text-white"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path
+                                    d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" />
+                            </svg>
+                            <span class="hidden md:block md:flex-1 m-0 md:ms-3 whitespace-nowrap">Requests</span>
+                        </a>
+                    </li>
                 @endhasrole
 
                 <!-- Events -->
                 <li>
                     <a href="{{ route('events.index') }}"
-                        class="events flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                        <svg class="p-0 m-0 object-center" width="22" height="22"
+                    class="md:events flex md:flex-row justify-between md:justify-normal items-center p-2 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <svg class="-ml-2 md:-ml-0 p-0 m-0 object-center scale-[240%] md:scale-100" width="22" height="22"
                             viewBox="-1.12 -1.12 18.24 18.24" xmlns="http://www.w3.org/2000/svg" fill="none"
                             stroke="#708090" stroke-width="0.00016">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -125,7 +115,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <span class="flex-1 m-0 md:ms-3 whitespace-nowrap">Events</span>
+                        <span class="hidden md:block md:flex-1 m-0 md:ms-3 whitespace-nowrap">Events</span>
                     </a>
                 </li>
             </div>
@@ -133,19 +123,19 @@
             <div>
                 <li>
                     <form action="{{ route('logout') }}" method="POST"
-                        class="flex flex-row-reverse md:flex-row justify-between md:justify-normal items-center text-gray-900 rounded-lg bg-gray-300 dark:hover:bg-gray-700 group m-0">
+                        class="flex md:ml-0 flex-row-reverse md:flex-row justify-between md:justify-normal items-center text-gray-900 rounded-lg md:bg-gray-300 md:dark:hover:bg-gray-700 group m-0">
                         @csrf
                         @method('POST')
                         <button
                             class="w-full flex items-center m-0 md:ms-3 whitespace-nowrap dark:text-gray-600 font-semibold dark:hover:text-gray-300 p-2">
-                            <svg class="rotate-180 flex-shrink-0 w-5 h-5 mr-3 text-gray-500 group-hover:text-gray-900 dark:group-hover:text-white"
+                            <svg class="rotate-180 flex-shrink-0 w-5 h-5 mr-3 text-gray-500 group-hover:text-gray-900 md:dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 18 16">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2"
                                     d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
                             </svg>
-                            Log out
+                            <span class="hidden md:block">Log out</span>
                         </button>
                     </form>
                 </li>

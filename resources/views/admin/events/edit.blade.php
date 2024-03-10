@@ -6,7 +6,7 @@
 <x-app-layout>
     <div class="w-full flex flex-row">
         @include('layouts.aside')
-        <div class="w-5/6 bg-gray-900">
+        <div class="w-11/12 md:w-5/6 overflow-y-scroll bg-gray-900">
             <div class="px-3 h-full flex flex-col justify-between">
                 <h2 class="text-2xl font-semibold my-3 text-center dark:text-gray-300">Edit Event</h2>
 
@@ -16,9 +16,9 @@
                         @csrf
                         @method('PUT')
 
-                        <div class="h-full flex gap-5">
+                        <div class="h-full flex flex-col md:flex-row gap-5">
                             {{-- Left of form --}}
-                            <div class="w-1/2 h-full flex flex-col justify-between">
+                            <div class="md:w-1/2 md:h-full flex flex-col justify-between">
                                 <!-- Title -->
                                 <div class="mb-3">
                                     <label for="title"
@@ -108,7 +108,7 @@
                             </div>
 
                             {{-- Right of form --}}
-                            <div class="w-1/2 flex flex-col h-full">
+                            <div class="md:w-1/2 flex flex-col h-full">
                                 <!-- Photo -->
                                 <div class="mb-3 flex justify-between w-full">
                                     <div class="w-full">
@@ -158,7 +158,7 @@
                                     </div>
 
                                 <!-- Description -->
-                                <div class="h-1/2 flex flex-col flex-grow">
+                                <div class="md:h-1/2 flex flex-col md:flex-grow">
                                     <label for="description"
                                         class="block mb-1 text-sm font-medium dark:text-gray-300">Description</label>
                                     <textarea name="description" id="myeditorinstance"

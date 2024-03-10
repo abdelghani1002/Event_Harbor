@@ -28,7 +28,11 @@
                         </p>
                         <div class="mb-5 md:mb-8 flex justify-between items-center dark:text-gray-100">
                             <span class="mb-3 w-fit px-2 py-1 rounded-md dark:bg-gray-700 ">
-                                {{ $event->category->name }}
+                                @if ($event->category)
+                                    {{ $event->category->name }}
+                                @else
+                                    ---
+                                @endif
                             </span>
                             <span class="font-bold m-0 p-1 text-2xl">
                                 <span class="flex gap-2 items-end">
@@ -120,12 +124,12 @@
                                 class="inline-flex text-white bg-indigo-600 border-0 py-2 px-6 focus:outline-none rounded text-lg">
                                 <strong class="mr-2 text-xl">{{ $event->reservations->count() }} </strong>tickets sold
                             </span>
-                        @elseif(auth()->user()->events_booked_to->contains($event))
+                        @elseif(auth()->user() && auth()->user()->events_booked_to->contains($event))
                             <form action="{{ route('download.ticket', $event) }}" method="post"
                                 class="inline-flex text-white bg-teal-600 border-0 p-0 focus:outline-none rounded text-lg">
                                 @csrf
                                 @method('POST')
-                                <button class="p-0 m-0">Get my Ticket</button>
+                                <button class="px-3 py-2 m-0">Get my Ticket</button>
                             </form>
                         @elseif($event->tickets_number - $event->tickets_booked == 0)
                             <span

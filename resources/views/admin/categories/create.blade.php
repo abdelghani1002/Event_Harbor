@@ -6,7 +6,7 @@
 <x-app-layout>
     <div class="w-full flex flex-row">
         @include('layouts.aside')
-        <div class="w-5/6 bg-gray-900">
+        <div class="w-11/12 md:w-5/6 bg-gray-900">
             <div class="p-3 w-full flex flex-col justify-center">
                 <h2 class="text-2xl font-semibold mb-3 text-center dark:text-gray-300">New Category</h2>
 
@@ -16,7 +16,7 @@
                         @csrf
                         @method('POST')
 
-                        <div class="w-1/2 flex h-full flex-col justify-between">
+                        <div class="w-4/5 md:w-1/2 flex h-full flex-col justify-between">
 
                             <!-- Name -->
                             <div class="mb-3">
