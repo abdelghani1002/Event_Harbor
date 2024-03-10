@@ -25,19 +25,16 @@ class ReservationController extends Controller
         $reservation = new Reservation();
         $reservation->user_id = $client->id;
         $reservation->event_id = $event->id;
-
+        $reservation->save();
         if ($event->reservation_type === 'manual') {
-            $reservation->save();
-            return redirect()->back()->with('infos', 'Your candidat has been registred. Please wait for organizer approval.');
+            return redirect()->back()->with('infos', 'Your candidat has been registred. Please wait for organizer validation.');
         }
-        // payment
-
-        return self::store_ticket($reservation);
-        // ticket
+        return PaymentController::checkout($reservation->id);
     }
 
-    static function store_ticket($reservation)
+    static function store_ticket($id)
     {
+        $reservation = Reservation::find($id);
         $ticket = TicketController::generate($reservation);
         if ($ticket) {
             $pdfPath = public_path('storage/tickets/ticket_' . $reservation->user_id . '_' . $reservation->event_id . '.pdf');
@@ -53,7 +50,7 @@ class ReservationController extends Controller
     {
         $status = $request->status;
         $reservation->update(['status' => $status]);
-        if($status == 'accepted'){
+        if ($status == 'accepted') {
             self::store_ticket($reservation);
             $reservation->client->notify(new ReservationAcceptedNotification($reservation));
         }

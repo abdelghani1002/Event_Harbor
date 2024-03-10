@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResereveController;
 use App\Http\Controllers\ReservationController;
@@ -42,6 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/reservations/edit/{reservation}', [ReservationController::class, "edit"])->name('reservations.edit')->middleware('role:organizer');
     Route::post('/reservations/accepteAll', [ReservationController::class, "accepteAll"])->name('reservations.accepteAll')->middleware('role:admin,organizer');
     Route::post('/download-ticket/{event}', [TicketController::class, 'download'])->name('download.ticket');
+    // Route::post("/checkout/{reservation}", [PaymentController::class, "checkout"])->name("checkout");
+    Route::get('/success', [PaymentController::class, 'success'])->name('success');
+    Route::get('/cancel', [PaymentController::class, 'cancel'])->name('cancel');
 });
 Route::get('events/{event}', [EventController::class,'show'])->name('events.show');
 
