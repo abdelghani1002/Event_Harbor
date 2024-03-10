@@ -150,7 +150,7 @@
                 </div>
                 <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
                     <img class="object-cover object-center rounded" alt="hero"
-                        @if (file_exists(asset('storage/photos/' . $event->photo_src))) src="{{ asset('storage/photos/' . $event->photo_src) }}"
+                        @if (file_exists('storage/photos/' . $event->photo_src)) src="{{ asset('storage/photos/' . $event->photo_src) }}"
                     @else
                     src="{{ asset('storage/photos/event_default.png') }}" @endif>
                 </div>

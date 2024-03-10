@@ -100,6 +100,7 @@
                                     @else
                                         <form class="flex justify-center items-center m-0"
                                             action="{{ route('users.update', $user->id) }}" method="POST"
+                                            onsubmit="return confirmBan(event)"
                                             >
                                             @csrf
                                             @method('PUT')

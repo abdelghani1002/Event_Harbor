@@ -2,7 +2,7 @@
     class="hover:scale-[101%] bg-white dark:bg-slate-800 m-2 rounded-lg overflow-hidden shadow-lg ring-4 ring-violet-500 ring-opacity-40 max-w-sm w-full md:w-[30%] flex flex-col justify-between">
     <div class="relative w-full  dark:text-gray-300">
         <img class="w-full object-cover max-h-56"
-            @if (file_exists(asset('storage/photos/' . $event->photo_src))) src="{{ asset('storage/photos/' . $event->photo_src) }}"
+            @if (file_exists('storage/photos/' . $event->photo_src)) src="{{ asset('storage/photos/' . $event->photo_src) }}"
             @else
             src="{{ asset('storage/photos/event_default.png') }}" @endif
             alt="Product Image">

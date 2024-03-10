@@ -47,6 +47,13 @@
             let confirmation = confirm("Are you sure you want to delete it ?!");
             return confirmation;
         }
+
+        function confirmBan() {
+            let confirmation = confirm("Are you sure you want to ?!");
+            return confirmation;
+        }
+
+
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
