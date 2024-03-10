@@ -34,7 +34,7 @@ class ReservationController extends Controller
 
     static function store_ticket($id)
     {
-        $reservation = Reservation::find($id);
+        $reservation = Reservation::find($id)->first();
         $ticket = TicketController::generate($reservation);
         if ($ticket) {
             $pdfPath = public_path('storage/tickets/ticket_' . $reservation->user_id . '_' . $reservation->event_id . '.pdf');

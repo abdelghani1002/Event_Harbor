@@ -125,12 +125,19 @@
                                 <strong class="mr-2 text-xl">{{ $event->reservations->count() }} </strong>tickets sold
                             </span>
                         @elseif(auth()->user() && auth()->user()->events_booked_to->contains($event))
-                            <form action="{{ route('download.ticket', $event) }}" method="post"
-                                class="inline-flex text-white bg-teal-600 border-0 p-0 focus:outline-none rounded text-lg">
-                                @csrf
-                                @method('POST')
-                                <button class="px-3 py-2 m-0">Get my Ticket</button>
-                            </form>
+                            @if (file_exists("storage/tickets/ticket_" . auth()->id() . "_" . $event->id . ".pdf"))
+                                <form action="{{ route('download.ticket', $event) }}" method="post"
+                                    class="inline-flex text-white bg-teal-600 border-0 p-0 focus:outline-none rounded text-lg">
+                                    @csrf
+                                    @method('POST')
+                                    <button class="px-3 py-2 m-0">Get my Ticket</button>
+                                </form>
+                            @else
+                                <span
+                                    class="inline-flex text-white bg-indigo-600 border-0 py-2 px-6 focus:outline-none rounded text-lg">
+                                    Pending ..<span class="">.</span>
+                                </span>
+                            @endif
                         @elseif($event->tickets_number - $event->tickets_booked == 0)
                             <span
                                 class="inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none rounded text-lg">
