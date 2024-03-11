@@ -24,29 +24,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/search', SearchController::class )->name('search');
+Route::middleware('ban.check')->group(function () {
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/search', SearchController::class)->name('search');
 
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('role:admin,organizer');
+    Route::middleware('auth')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('users', UserController::class)->only(['index', 'update'])->middleware('role:admin');
-    Route::resource('categories', CategoryController::class)->middleware('role:admin,organizer');
-    Route::resource('events', EventController::class)->except('show')->middleware('role:admin,organizer');
+        Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('role:admin,organizer');
 
-    Route::post('/reservations/{event}', [ReservationController::class, "store"])->name('reservations.store');
-    Route::get('reservations', [ReservationController::class, 'index'])->name('reservations.index')->middleware('role:admin,organizer');
-    Route::put('/reservations/edit/{reservation}', [ReservationController::class, "edit"])->name('reservations.edit')->middleware('role:organizer');
-    Route::post('/reservations/accepteAll', [ReservationController::class, "accepteAll"])->name('reservations.accepteAll')->middleware('role:admin,organizer');
-    Route::post('/download-ticket/{event}', [TicketController::class, 'download'])->name('download.ticket');
-    // Route::post("/checkout/{reservation}", [PaymentController::class, "checkout"])->name("checkout");
-    Route::get('/success', [PaymentController::class, 'success'])->name('success');
-    Route::get('/cancel', [PaymentController::class, 'cancel'])->name('cancel');
+        Route::resource('users', UserController::class)->only(['index', 'update'])->middleware('role:admin');
+        Route::resource('categories', CategoryController::class)->middleware('role:admin,organizer');
+        Route::resource('events', EventController::class)->except('show')->middleware('role:admin,organizer');
+
+        Route::post('/reservations/{event}', [ReservationController::class, "store"])->name('reservations.store');
+        Route::get('reservations', [ReservationController::class, 'index'])->name('reservations.index')->middleware('role:admin,organizer');
+        Route::put('/reservations/edit/{reservation}', [ReservationController::class, "edit"])->name('reservations.edit')->middleware('role:organizer');
+        Route::post('/reservations/accepteAll', [ReservationController::class, "accepteAll"])->name('reservations.accepteAll')->middleware('role:admin,organizer');
+        Route::post('/download-ticket/{event}', [TicketController::class, 'download'])->name('download.ticket');
+        Route::get('/success', [PaymentController::class, 'success'])->name('success');
+        Route::get('/cancel', [PaymentController::class, 'cancel'])->name('cancel');
+    });
+    Route::get('events/{event}', [EventController::class, 'show'])->name('events.show');
+
 });
-Route::get('events/{event}', [EventController::class,'show'])->name('events.show');
-
 require __DIR__ . '/auth.php';
