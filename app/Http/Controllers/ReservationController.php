@@ -25,8 +25,8 @@ class ReservationController extends Controller
         $reservation = new Reservation();
         $reservation->user_id = $client->id;
         $reservation->event_id = $event->id;
-        $reservation->save();
         if ($event->reservation_type === 'manual') {
+            $reservation->save();
             return redirect()->back()->with('infos', 'Your candidat has been registred. Please wait for organizer validation.');
         }
         return PaymentController::checkout($reservation->id);
