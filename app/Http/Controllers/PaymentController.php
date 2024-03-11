@@ -11,7 +11,7 @@ class PaymentController extends Controller
 {
     static function checkout(int $id)
     {
-        $reservation = Reservation::find($id);
+        $reservation = Reservation::where('id', $id)->first();
         $total = $reservation->event->ticket_price;
         $payment = Mollie::api()->payments->create([
             "amount" => [

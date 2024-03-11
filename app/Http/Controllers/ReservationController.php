@@ -25,22 +25,21 @@ class ReservationController extends Controller
         $reservation = new Reservation();
         $reservation->user_id = $client->id;
         $reservation->event_id = $event->id;
+        $reservation->save();
         if ($event->reservation_type === 'manual') {
-            $reservation->save();
             return redirect()->back()->with('infos', 'Your candidat has been registred. Please wait for organizer validation.');
         }
-        return PaymentController::checkout($reservation->id);
+        return PaymentController::checkout($reservation->refresh()->id);
     }
 
     static function store_ticket($id)
     {
-        $reservation = Reservation::find($id)->first();
+        $reservation = Reservation::where('id', $id)->first();
         $ticket = TicketController::generate($reservation);
         if ($ticket) {
             $pdfPath = public_path('storage/tickets/ticket_' . $reservation->user_id . '_' . $reservation->event_id . '.pdf');
             $ticket->save($pdfPath);
-            $reservation->status = 'accepted';
-            $reservation->save();
+            $reservation->update(['status' => 'accepted']);
             return redirect()->back()->with('success', 'Your ticket has been saved.');
         }
         return redirect()->back()->with('error', 'Error withing generate your ticket!');
