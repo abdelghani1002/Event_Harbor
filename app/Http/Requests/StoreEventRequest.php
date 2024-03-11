@@ -29,7 +29,7 @@ class StoreEventRequest extends FormRequest
             'place' => 'required|string',
             'tickets_number' => 'required|integer|min:1',
             'ticket_price' => 'required|numeric|min:0',
-            'photo' => 'bail|nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo' => 'bail|nullable|file|mimes:jpeg,png,jpg,gif,svg|max:6000',
             'reservation_type' => 'required|in:manual,automatic',
             'category_id' => 'required|exists:categories,id',
         ];

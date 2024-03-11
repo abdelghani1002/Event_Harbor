@@ -30,7 +30,7 @@ class UpdateEventRequest extends FormRequest
             'status' => 'in:pending,rejected,published',
             'tickets_number' => 'integer|min:1',
             'ticket_price' => 'numeric|min:0',
-            'photo' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:6000',
             'reservation_type' => 'in:manual,automatic',
             'category_id' => 'exists:categories,id',
         ];
