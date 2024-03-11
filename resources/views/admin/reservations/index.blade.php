@@ -19,12 +19,6 @@
                         {{ session('error') }}
                     </p>
                 @endif
-                <form class="m-0 cursor-pointer text-white font-bold bg-green-700 rounded-xl p-2 hover:bg-green-800"
-                    href="{{ route('reservations.accepteAll') }}">
-                    <button class="p-0 m-0">
-                        Accept All
-                    </button>
-                </form>
             </div>
 
 
