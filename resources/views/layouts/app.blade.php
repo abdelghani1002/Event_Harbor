@@ -21,6 +21,13 @@
 </head>
 
 <body class="font-sans antialiased">
+    {{-- Preloader --}}
+    <div id="preloader" class="preloader">
+        <div class="icon">
+            <img class="w-20" src="{{asset('favicon.ico')}}" alt="">
+        </div>
+    </div>
+
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         @auth
             @include('layouts.navigation')
@@ -43,6 +50,10 @@
         </main>
     </div>
     <script>
+        let preloader = document.getElementById('preloader');
+        window.addEventListener('load', () => {
+            preloader.style.display = 'none'
+        })
         function confirmDelete() {
             let confirmation = confirm("Are you sure you want to delete it ?!");
             return confirmation;
