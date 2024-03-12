@@ -1,8 +1,4 @@
 $(document).ready(function () {
-    // alert
-    setTimeout(() => {
-        $(".alert").hide();
-    }, 3000);
 
     let loadingElement = `
     <div aria-label="Loading..." role="status" class="flex items-center space-x-2">
