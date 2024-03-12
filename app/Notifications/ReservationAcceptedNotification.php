@@ -6,6 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Route;
 
 class ReservationAcceptedNotification extends Notification
 {
@@ -42,13 +44,16 @@ class ReservationAcceptedNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
+        $checkoutUrl = URL::route('checkout', $this->reservation->id);
+
         return (new MailMessage)
             ->mailer($this->mailer)
             ->subject($this->subject)
-            ->attach(public_path('storage/tickets/ticket_' . $this->reservation->user_id . '_' . $this->reservation->event_id . '.pdf'))
+            // ->attach(public_path('storage/tickets/ticket_' . $this->reservation->user_id . '_' . $this->reservation->event_id . '.pdf'))
             ->greeting("Hello " . $notifiable->name)
             ->line("🤩🤩 Your reservation accepted 🤩🤩")
-            ->line("Check attachments for your Ticket.")
+            ->line("Checkout for your Ticket.")
+            ->action('Checkout Now', $checkoutUrl)
             ->line("Enjoy," . $notifiable->name);
     }
 

@@ -24,6 +24,7 @@ class PaymentController extends Controller
         session()->put('paymentId', $payment->id);
         session()->put('reservationId', $reservation->id);
         // redirect customer to Mollie checkout page
+        // dd($payment->getCheckoutUrl());
         return redirect($payment->getCheckoutUrl(), 303);
     }
 

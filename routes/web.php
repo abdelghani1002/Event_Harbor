@@ -45,10 +45,12 @@ Route::middleware('ban.check')->group(function () {
         Route::put('/reservations/edit/{reservation}', [ReservationController::class, "edit"])->name('reservations.edit')->middleware('role:organizer');
         Route::post('/reservations/accepteAll', [ReservationController::class, "accepteAll"])->name('reservations.accepteAll')->middleware('role:admin,organizer');
         Route::post('/download-ticket/{event}', [TicketController::class, 'download'])->name('download.ticket');
+        Route::get('/checkout/{id}', function ($id) {
+            return PaymentController::checkout($id);
+        })->name("checkout");
         Route::get('/success', [PaymentController::class, 'success'])->name('success');
         Route::get('/cancel', [PaymentController::class, 'cancel'])->name('cancel');
     });
     Route::get('events/{event}', [EventController::class, 'show'])->name('events.show');
-
 });
 require __DIR__ . '/auth.php';

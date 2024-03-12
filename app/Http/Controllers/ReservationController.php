@@ -40,9 +40,9 @@ class ReservationController extends Controller
             $pdfPath = public_path('storage/tickets/ticket_' . $reservation->user_id . '_' . $reservation->event_id . '.pdf');
             $ticket->save($pdfPath);
             $reservation->update(['status' => 'accepted']);
-            return redirect()->back()->with('success', 'Your ticket has been saved.');
+            return redirect()->route('events.show', $reservation->event)->with('success', 'Your ticket has been saved.');
         }
-        return redirect()->back()->with('error', 'Error withing generate your ticket!');
+        return redirect()->route('events.show', $reservation->event)->with('error', 'Error withing generate your ticket!');
     }
 
     public function edit(Request $request, Reservation $reservation)
@@ -50,7 +50,7 @@ class ReservationController extends Controller
         $status = $request->status;
         $reservation->update(['status' => $status]);
         if ($status == 'accepted') {
-            self::store_ticket($reservation);
+            // self::store_ticket($reservation);
             $reservation->client->notify(new ReservationAcceptedNotification($reservation));
         }
         return redirect()->back()->with('success', 'Reservation updated successfully');
